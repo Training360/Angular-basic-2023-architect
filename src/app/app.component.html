@@ -17,7 +17,9 @@
             fill="currentColor"></path>
         </svg>
         <!-- Interpolation -->
-        <span class="fs-4"></span>
+        <span class="fs-4">
+          {{ headers[0] }}
+        </span>
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
@@ -30,7 +32,9 @@
 
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <!-- Interpolation -->
-      <h1 class="display-4 fw-normal"></h1>
+      <h1 class="display-4 fw-normal">
+        {{ headers[1]}}
+      </h1>
       <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this
         Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
     </div>
@@ -41,19 +45,19 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Free</h4>
+            <h4 class="my-0 fw-normal">{{ pricing[0].name }}</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">${{ pricing[0].price }}<small class="text-muted fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <!-- Interpolation -->
-              <li> users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
+              <li>{{ pricing[0].users }} users included</li>
+              <li>{{ pricing[0].storage }} GB of storage</li>
+              <li>{{ pricing[0].email }}</li>
               <li>Help center access</li>
             </ul>
             <!-- Event binding: onChoosePlan -->
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+            <button (click)="onChoosePlan()" type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
           </div>
         </div>
       </div>
@@ -76,9 +80,8 @@
       </div>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <!-- property: class = text-white -->
           <!-- property: class = bg-primary -->
-          <div class="card-header py-3 border-primary">
+          <div [class]="classes['bg']" class="card-header text-white py-3 border-primary">
             <h4 class="my-0 fw-normal">Enterprise</h4>
           </div>
           <div class="card-body">
@@ -96,24 +99,29 @@
     </div>
 
     <!-- Property bindig: hidden if isQuestionShow is false" -->
-    <div class="row">
+    <div [hidden]="!isQuestionShow" class="row">
       <div class="col-12">
         <form>
           <div class="form-group">
             <label for="userQuestion">Do you have a question?</label>
             <div class="input-group">
               <!-- Two-way data-binding: userQuestion -->
-              <input id="userQuestion" type="text" class="form-control">
+              <input name="userQuestion" [(ngModel)]="userQuestion" id="userQuestion" type="text" class="form-control">
               <!-- Event binding: onOrder -->
-              <button class="btn btn-primary" type="button">Order</button>
+              <button (click)="onOrder(pricing[0])" class="btn btn-primary" type="button">Order</button>
             </div>
+          </div>
+          <div class="alert alert-success mt-2" [hidden]="!userQuestion">
+            Your question: {{ userQuestion }}
           </div>
       </form>
     </div>
 </div>
 
 <!-- Interpolation -->
-<h2 class="display-6 text-center mb-4"></h2>
+<h2 class="display-6 text-center mb-4">
+  {{ headers[2] }}
+</h2>
 
 <div class="table-responsive">
   <table class="table text-center">
