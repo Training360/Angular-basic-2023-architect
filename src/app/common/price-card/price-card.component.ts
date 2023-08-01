@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Plan } from 'src/app/model/plan';
 
 @Component({
@@ -20,8 +20,14 @@ export class PriceCardComponent {
     'text-black': true,
   };
 
+  @Input() btnClass: string[] = [
+    'btn-outline-primary',
+  ];
+
+  @Output() onChoose: EventEmitter<Plan> = new EventEmitter();
+
   onChoosePlan(): void {
-    //
+    this.onChoose.emit(this.plan);
   }
 
 }

@@ -4,4 +4,5 @@ export interface Plan {
   users: number;
   storage: number;
   email: string;
+  btnText?: string;
 }

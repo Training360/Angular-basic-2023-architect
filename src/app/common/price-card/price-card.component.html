@@ -12,6 +12,8 @@
       <li>Help center access</li>
     </ul>
     <!-- Event binding: onChoosePlan -->
-    <button (click)="onChoosePlan()" type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+    <button [ngClass]="btnClass" (click)="onChoosePlan()" type="button" class="w-100 btn btn-lg">
+      {{ plan.btnText || 'Sign up for free' }}
+    </button>
   </div>
 </div>

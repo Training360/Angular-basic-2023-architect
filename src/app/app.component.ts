@@ -29,6 +29,7 @@ export class AppComponent {
       users: 20,
       storage: 10,
       email: 'Priority email support',
+      btnText: 'Get started',
     },
     {
       name: 'Enterprise',
@@ -36,6 +37,7 @@ export class AppComponent {
       users: 30,
       storage: 15,
       email: 'Phone and email support',
+      btnText: 'Contact us',
     },
   ];
 
@@ -53,7 +55,7 @@ export class AppComponent {
     'text-white': true,
   };
 
-  onChoosePlan(): void {
+  onChoosePlan(plan: Plan): void {
     this.isQuestionShow = true;
   }
 
