@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Plan } from 'src/app/model/plan';
 
 @Component({
@@ -8,12 +8,16 @@ import { Plan } from 'src/app/model/plan';
 })
 export class PriceCardComponent {
 
-  plan: Plan = {
+  @Input() plan: Plan = {
     name: 'Free',
     price: 0,
     users: 10,
     storage: 1,
     email: 'Email support',
+  };
+
+  @Input() cardClass: {[k: string]: boolean} = {
+    'text-black': true,
   };
 
   onChoosePlan(): void {

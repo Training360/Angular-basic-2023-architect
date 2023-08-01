@@ -48,6 +48,11 @@ export class AppComponent {
     txt: 'text-white',
   };
 
+  primaryCardClass: {[k: string]: boolean} = {
+    'bg-primary': true,
+    'text-white': true,
+  };
+
   onChoosePlan(): void {
     this.isQuestionShow = true;
   }
