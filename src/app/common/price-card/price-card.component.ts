@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Plan } from 'src/app/model/plan';
 
 @Component({
@@ -6,7 +6,7 @@ import { Plan } from 'src/app/model/plan';
   templateUrl: './price-card.component.html',
   styleUrls: ['./price-card.component.scss']
 })
-export class PriceCardComponent {
+export class PriceCardComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   @Input() plan: Plan = {
     name: 'Free',
@@ -16,7 +16,7 @@ export class PriceCardComponent {
     email: 'Email support',
   };
 
-  @Input() cardClass: {[k: string]: boolean} = {
+  @Input() cardClass: { [k: string]: boolean } = {
     'text-black': true,
   };
 
@@ -28,6 +28,39 @@ export class PriceCardComponent {
 
   onChoosePlan(): void {
     this.onChoose.emit(this.plan);
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges');
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
   }
 
 }
