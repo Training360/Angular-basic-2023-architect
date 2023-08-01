@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Plan {
-  name: string;
-  price: number;
-  users: number;
-  storage: number;
-  email: string;
-}
+import { Plan } from './model/plan';
 
 @Component({
   selector: 'app-root',
