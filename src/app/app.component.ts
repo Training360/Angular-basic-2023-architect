@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Plan } from './model/plan';
+import { PlanService } from './service/plan.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { Plan } from './model/plan';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  private planService: PlanService = inject(PlanService);
+
   title = 'my-first-angular-app';
 
   headers: string[] = [
@@ -15,31 +19,7 @@ export class AppComponent {
     'Compare Plans',
   ];
 
-  pricing: Plan[] = [
-    {
-      name: 'Free',
-      price: 0,
-      users: 10,
-      storage: 1,
-      email: 'Email support',
-    },
-    {
-      name: 'Pro',
-      price: 15,
-      users: 20,
-      storage: 10,
-      email: 'Priority email support',
-      btnText: 'Get started',
-    },
-    {
-      name: 'Enterprise',
-      price: 29,
-      users: 30,
-      storage: 15,
-      email: 'Phone and email support',
-      btnText: 'Contact us',
-    },
-  ];
+  pricing = this.planService.pricing;
 
   isQuestionShow: boolean = false;
 
